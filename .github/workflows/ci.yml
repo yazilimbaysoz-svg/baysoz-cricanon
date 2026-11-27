@@ -1,0 +1,34 @@
+# CI quality gates — Baysöz Labs <baysozlabs@proton.me>
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+      - name: Install uv
+        uses: astral-sh/setup-uv@8d293aae84cfe34ff8371dcea170a3c80e239e35
+      - name: Select Python 3.13
+        run: uv python install 3.13
+      - name: Create environment and install project
+        run: |
+          uv venv
+          uv pip install -e .
+          uv pip install pytest ruff semgrep
+      - name: Tests
+        run: uv run pytest -q
+      - name: Lint and static security
+        run: uv run ruff check --select E,F,W,S,B .
+      - name: Semgrep default rules
+        run: uv run semgrep --config p/default --error .

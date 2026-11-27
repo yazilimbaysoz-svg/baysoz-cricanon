@@ -1,0 +1,55 @@
+# Baysöz Labs <baysozlabs@proton.me>
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "baysoz-cricanon"
+version = "0.1.0"
+description = "Offline CRI log-stream record-boundary and continuity oracle with SARIF CI gates — Baysöz Labs <baysozlabs@proton.me>"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Baysöz Labs", email = "baysozlabs@proton.me" },
+]
+keywords = [
+  "observability",
+  "kubernetes",
+  "cri",
+  "log-parsing",
+  "multiline",
+  "sarif",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: System :: Monitoring",
+]
+dependencies = []
+
+[project.scripts]
+cricanon = "baysoz_cricanon.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yazilimbaysoz-svg/baysoz-cricanon"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/baysoz_cricanon"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "S", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
