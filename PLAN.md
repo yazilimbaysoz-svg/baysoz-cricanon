@@ -75,11 +75,15 @@ covered by executable tests.
 
 Verdict: **UNANIMOUS PASS** — 7 of 7 jurors approved release.
 
-## Phase 6 — Publication (pending)
+## Phase 6 — Publication (complete)
 
-- Create public repository `yazilimbaysoz-svg/baysoz-cricanon`.
-- Push the source tree with crisp description and topics.
-- Write strictly valid JSON to the showcase workspace factory result file.
+- Created public repository
+  https://github.com/yazilimbaysoz-svg/baysoz-cricanon
+- Pushed the source tree with a crisp attributed description and topics:
+  `observability`, `kubernetes`, `cri`, `log-parsing`, `multiline`, `sarif`,
+  `python`, `ci`, `sre`.
+- Wrote strictly valid JSON to the showcase workspace factory result file
+  without touching other showcase files.
 
 ## Attribution
 
